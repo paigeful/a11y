@@ -1,0 +1,58 @@
+input[type='radio']:focus  + label {
+  background-color: #e5f0f9;
+}
+.modern input[type='radio'] + label {
+  position: relative;
+  display: inline-block;
+}
+
+.modern input[type='radio'] + label {
+  font-size: $form_fields_font_size/$base_font_size + em;
+  padding: 0 10/$form_fields_font_size + em;
+  color: #a5a5a5;
+}
+
+input[type='radio']:checked + label {
+  color: black;
+}
+
+input[type='radio'] {
+  opacity: 0;
+  margin-left: 2px;
+}
+
+input[type='radio'] + label::before {
+  position: absolute;
+  content: '';
+  border-radius: 8px;
+  border: 8px solid #a5a5a5;
+  top: 2px;
+  @if $direction == 'ltr' {
+    left: -14px;
+  } @else {
+    right: -14px;
+  }
+}
+
+input[type='radio'] + label::after {
+  position: absolute;
+  content: '';
+  border-radius: 7px;
+  border: 7px solid #fff;
+  top: 3px;
+  @if $direction == 'ltr' {
+    left: -13px;
+  } @else {
+    right: -13px;
+  }
+}
+
+input[type='radio']:checked + label::after {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+}
+
+input[type='radio'].error  + label::before {
+  border: 8px solid #e73d3d;
+}

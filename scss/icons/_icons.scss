@@ -1,0 +1,15 @@
+.icon-medium {
+  display: inline-block;
+  background: url($sprite_path) no-repeat;
+  background-size: 15px 60px;
+  width: 15px;
+  height: 15px;
+}
+
+.unchecked {
+  background-position: 0 -30px;
+}
+
+.checked {
+  background-position: 0 -45px;
+}
