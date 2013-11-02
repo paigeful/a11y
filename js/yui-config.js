@@ -130,15 +130,15 @@ var YUI_config = {
         },
         'user-name-suggestions-controller' : {
           fullpath: '../js/user-name-suggestions-core/user-name-suggestions-controller.js',
-          requires: ['node', 'user-name-suggestions-model', 'user-name-suggestions-event-handler']
+          requires: ['node', 'user-name-suggestions-model']
         }
       }
     },
     user_name_suggestions : {
       'modules': {
         // user name suggestions
-        'user-name-suggestions-markup' : {
-          fullpath: '../js/user-name-suggestions/user-name-suggestions-markup.js',
+        'user-name-suggestions-view' : {
+          fullpath: '../js/user-name-suggestions/user-name-suggestions-view.js',
           requires: ['node']
         },
         'user-name-suggestions' : {

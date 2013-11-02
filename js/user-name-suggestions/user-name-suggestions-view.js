@@ -1,15 +1,15 @@
-YUI.add('user-name-suggestions-markup', function(Y) {
+YUI.add('user-name-suggestions-view', function(Y) {
 
-  var UserNameSuggestionsMarkup;
+  var UserNameSuggestionsView;
 
-  UserNameSuggestionsMarkup = function(config) {
+  UserNameSuggestionsView = function(config) {
     this.userName = config.userName;
     this.suggestionsAvailableMessage = config.suggestionsAvailableMessage;
 
     this.selectedIndex = -1;
   };
 
-  Y.mix(UserNameSuggestionsMarkup.prototype, {
+  Y.mix(UserNameSuggestionsView.prototype, {
 
     renderSuggestionsContainer : function() {
 
@@ -129,16 +129,12 @@ YUI.add('user-name-suggestions-markup', function(Y) {
       _this.userName.detach('keydown', this.keydownHandler);
       _this.suggestionsContainer.detach('mouseover', _this.mouseoverHandler);
       _this.suggestionsContainer.detach('mousedown', _this.mousedownHandler);
-    },
-
-    init : function() {
-      var _this = this;
-
     }
+
   }, true);
 
   Y.namespace('UserNameSuggestions');
 
-  Y.UserNameSuggestions.UserNameSuggestionsMarkup = UserNameSuggestionsMarkup;
+  Y.UserNameSuggestions.UserNameSuggestionsView = UserNameSuggestionsView;
 
 }, {requires: ['node']});

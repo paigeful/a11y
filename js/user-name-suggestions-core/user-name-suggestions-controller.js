@@ -4,7 +4,7 @@ YUI.add('user-name-suggestions-controller', function(Y) {
 
   UserNameSuggestionsController = function(config) {
 
-    this.UserNameSuggestionsMarkup = config.UserNameSuggestionsMarkup;
+    this.UserNameSuggestionsView = config.UserNameSuggestionsView;
     this.suggestionsAvailableMessage = config.suggestionsAvailableMessage;
 
     this.suggestionUrl = config.suggestionUrl;
@@ -15,10 +15,7 @@ YUI.add('user-name-suggestions-controller', function(Y) {
     this.userName = config.userName;
     this.domain = config.domain;
 
-    this.partner = config.partner;
-    this.intl = config.intl;
-    this.u = config.u;
-    this.t = config.t;
+    this.extraQueryParams = config.extraQueryParams;
 
     this.UserNameSuggestionsModel = Y.UserNameSuggestions.UserNameSuggestionsModel;
     this.UserNameSuggestionsEventHandler = Y.UserNameSuggestions.UserNameSuggestionsEventHandler;
@@ -29,40 +26,36 @@ YUI.add('user-name-suggestions-controller', function(Y) {
 
     init : function() {
 
-      var _this = this;
+      // instantiate view
+      this.userNameSuggestionsView = new this.UserNameSuggestionsView({
+        userName : this.userName,
+        suggestionsAvailableMessage : this.suggestionsAvailableMessage
+      });
 
-      this.userNameSuggestionsMarkup = new this.UserNameSuggestionsMarkup({
-                                        userName : this.userName,
-                                        suggestionsAvailableMessage : this.suggestionsAvailableMessage
-                                      });
+      this.userNameSuggestionsView.renderSuggestionsContainer();
 
-      this.suggestionsContainer = this.userNameSuggestionsMarkup.renderSuggestionsContainer();
-
+      // instantiate model
       this.userNameSuggestionsModel = new this.UserNameSuggestionsModel({
-                                        userNameSuggestionsMarkup : this.userNameSuggestionsMarkup,
-                                        suggestionsContainer : this.suggestionsContainer,
-                                        suggestionUrl : this.suggestionUrl,
-                                        availableUrl : this.availableUrl,
+        suggestionUrl : this.suggestionUrl,
+        availableUrl : this.availableUrl,
 
-                                        firstName : this.firstName,
-                                        lastName : this.lastName,
-                                        userName : this.userName,
-                                        domain : this.domain,
+        firstName : this.firstName,
+        lastName : this.lastName,
+        userName : this.userName,
+        domain : this.domain,
 
-                                        partner : this.partner,
-                                        intl : this.intl,
-                                        u : this.u,
-                                        t : this.t
-                                      });
+        extraQueryParams : this.extraQueryParams
 
-      this.userNameSuggestionsEventHandler = new Y.UserNameSuggestions.UserNameSuggestionsEventHandler({
-                                        userName : this.userName,
-                                        suggestionsContainer : this.suggestionsContainer,
-                                        userNameSuggestionsModel : this.userNameSuggestionsModel,
-                                        userNameSuggestionsMarkup : this.userNameSuggestionsMarkup
-                                      });
+      });
 
-      this.userNameSuggestionsEventHandler.init();
+      var userNameSuggestionsModel = this.userNameSuggestionsModel,
+        userNameSuggestionsView = this.userNameSuggestionsView,
+        getSuggestions = userNameSuggestionsModel.getSuggestions,
+        renderSuggestions = userNameSuggestionsView.renderSuggestions,
+        hideSuggestions = userNameSuggestionsView.hideSuggestions;
+
+      this.userName.on('focus', getSuggestions, null, userNameSuggestionsModel, renderSuggestions, userNameSuggestionsView);
+      this.userName.on('blur', hideSuggestions, null, userNameSuggestionsView);
 
     }
   }, true);
@@ -71,4 +64,4 @@ YUI.add('user-name-suggestions-controller', function(Y) {
 
   Y.UserNameSuggestions.UserNameSuggestionsController = UserNameSuggestionsController;
 
-}, {requires: ['node', 'user-name-suggestions-model', 'user-name-suggestions-event-handler']});
+}, {requires: ['node', 'user-name-suggestions-model']});

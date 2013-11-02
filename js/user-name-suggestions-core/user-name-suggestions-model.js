@@ -3,8 +3,6 @@ YUI.add('user-name-suggestions-model', function(Y) {
   var UserNameSuggestionsModel;
 
   UserNameSuggestionsModel = function(config) {
-    this.userNameSuggestionsMarkup = config.userNameSuggestionsMarkup;
-    this.suggestionsContainer = config.suggestionsContainer;
     this.suggestionUrl = config.suggestionUrl;
     this.availableUrl = config.availableUrl;
 
@@ -14,10 +12,7 @@ YUI.add('user-name-suggestions-model', function(Y) {
     this.domain = config.domain;
 
     // crap
-    this.partnerValue = config.partner.get('value');
-    this.intlValue = config.intl.get('value');
-    this.uValue = config.u.get('value');
-    this.tValue = config.t.get('value');
+    this.extraQueryParams = config.extraQueryParams;
 
     this.suggestions = suggestions = {available: false, list: [] };
 
@@ -26,26 +21,22 @@ YUI.add('user-name-suggestions-model', function(Y) {
   Y.mix(UserNameSuggestionsModel.prototype, {
 
     createUrl : function(url) {
-      var queryParams = [], firstNameValue, lastNameValue, yidValue, domainValue;
+      var queryParams = [], firstNameValue, lastNameValue, userNameValue, domainValue;
 
       firstNameValue = Y.Lang.trim(this.firstName.get('value'));
       lastNameValue = Y.Lang.trim(this.lastName.get('value'));
-      yidValue = Y.Lang.trim(this.userName.get('value'));
+      userNameValue = Y.Lang.trim(this.userName.get('value'));
       domainValue = this.domain.getAttribute('value');
 
       queryParams.push('GivenName='+firstNameValue);
       queryParams.push('FamilyName='+lastNameValue);
-      queryParams.push('AccountID='+yidValue+'@'+domainValue);
-      queryParams.push('ApiName=ValidateFields');
-      queryParams.push('RequestVersion=1');
+      queryParams.push('AccountID='+userNameValue+'@'+domainValue);
 
-      queryParams.push('PartnerName='+this.partnerValue);
-      queryParams.push('intl='+this.intlValue);
-      queryParams.push('u='+this.uValue);
-      queryParams.push('t='+this.tValue);
+      queryParams.push(this.extraQueryParams);
+
       queryParams.push(new Date().getTime());
 
-      if(firstNameValue || lastNameValue || yidValue) {
+      if(firstNameValue || lastNameValue || userNameValue) {
         return url + queryParams.join('&');
       } else {
         return false;
@@ -56,7 +47,6 @@ YUI.add('user-name-suggestions-model', function(Y) {
       if (uglySuggestions.ResultCode === 'SUCCESS') {
         this.suggestions.available = true;
       } else {
-        // add watch list code
         this.suggestions.available = false;
         this.suggestions.list = [];
         for (var i = 0, l = uglySuggestions.SuggestedIDList.length; i < l; i+=1) {
