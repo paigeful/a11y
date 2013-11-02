@@ -109,7 +109,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
       }
 
       this.suggestionsContainer.setStyle('display', 'block');
-      setTimeout(function() {
+      this.timeoutId = setTimeout(function() {
         _this.suggestionsReadOutContainer.set('innerHTML', _this.suggestionsAvailableMessage);
       }, 2000);
 
@@ -123,6 +123,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
     hideSuggestions : function(e, _this) {
       _this.suggestionsContainer.setStyle('display', 'none');
       _this.suggestionsReadOutContainer.set('innerHTML', '');
+      clearTimeout(_this.timeoutId);
 
       _this.selectedIndex = -1;
 
