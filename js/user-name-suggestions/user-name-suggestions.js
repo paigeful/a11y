@@ -3,6 +3,7 @@ YUI.add('user-name-suggestions', function(Y) {
   Y.use('user-name-suggestions-controller', function(Y){
     var userNameSuggestionsController = new Y.UserNameSuggestions.UserNameSuggestionsController({
       UserNameSuggestionsMarkup : Y.UserNameSuggestions.UserNameSuggestionsMarkup,
+      suggestionsAvailableMessage : 'Suggestions available, press Shift + Down or Up arrow to navigate between suggestions and press enter to select.',
 
       suggestionUrl : '../../suggest-username?',
       availableUrl : '../../is-username-available?',

@@ -4,6 +4,8 @@ YUI.add('user-name-suggestions-markup', function(Y) {
 
   UserNameSuggestionsMarkup = function(config) {
     this.userName = config.userName;
+    this.suggestionsAvailableMessage = config.suggestionsAvailableMessage;
+
     this.selectedIndex = -1;
   };
 
@@ -15,6 +17,7 @@ YUI.add('user-name-suggestions-markup', function(Y) {
 
       suggestionsContainerHTML.push("<div class='row suggestion-row'>");
         suggestionsContainerHTML.push("<ul class='suggestions-container' id='suggestions-container' role='menu'></ul>");
+        suggestionsContainerHTML.push("<p class='clipped' id='suggestions-read-out-container' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>");
       suggestionsContainerHTML.push("</div>");
 
       suggestionsContainerHTML = suggestionsContainerHTML.join('');
@@ -22,6 +25,7 @@ YUI.add('user-name-suggestions-markup', function(Y) {
       this.userName.get('parentNode').append(suggestionsContainerHTML);
 
       this.suggestionsContainer = Y.one('#suggestions-container');
+      this.suggestionsReadOutContainer = Y.one('#suggestions-read-out-container');
 
       return this.suggestionsContainer;
 
@@ -33,6 +37,7 @@ YUI.add('user-name-suggestions-markup', function(Y) {
 
     highlightSuggestion : function(suggestion) {
       suggestion && suggestion.addClass('suggestions-hovered');
+      this.suggestionsReadOutContainer.set('innerHTML', suggestion.get('innerHTML'));
     },
 
     keydownHandler : function(e, _this) {
@@ -104,6 +109,9 @@ YUI.add('user-name-suggestions-markup', function(Y) {
       }
 
       this.suggestionsContainer.setStyle('display', 'block');
+      setTimeout(function() {
+        _this.suggestionsReadOutContainer.set('innerHTML', _this.suggestionsAvailableMessage);
+      }, 2000);
 
       this.userName.on('keydown', this.keydownHandler, null, _this);
 
@@ -114,6 +122,7 @@ YUI.add('user-name-suggestions-markup', function(Y) {
 
     hideSuggestions : function(e, _this) {
       _this.suggestionsContainer.setStyle('display', 'none');
+      _this.suggestionsReadOutContainer.set('innerHTML', '');
 
       _this.selectedIndex = -1;
 
