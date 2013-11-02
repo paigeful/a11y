@@ -23,6 +23,12 @@
         </div>
         <div class='input-container'>
 
+          <input type='hidden' id='domain' value='yahoo.com'>
+          <input type='hidden' id='partner' value='partner'>
+          <input type='hidden' id='intl' value='intl'>
+          <input type='hidden' id='t' value='t'>
+          <input type='hidden' id='u' value='u'>
+
           <div class='row input-row'>
             <div class='column first-name'>
               <label class='field-label' id='first-name-label'>First name</label>
@@ -122,7 +128,7 @@
               <option country-tld='fo' value='+298'>Faroe Islands (+298)</option>
               <option country-tld='fj' value='+679'>Fiji Islands (+679)</option>
               <option country-tld='fi' value='+358'>Finland (+358)</option>
-              <option country-tld='fr' value='+33'>France (+33)</option>
+              <option country-tld='fr' value='+33' corresponding-field-data-format='X XX XX XX XX' >France (+33)</option>
               <option country-tld='yy' value='+262'>French Dept/Terr in Indian Ocean (+262)</option>
               <option country-tld='gf' value='+594'>French Guiana (+594)</option>
               <option country-tld='pf' value='+689'>French Polynesia (+689)</option>
@@ -751,7 +757,7 @@
     <!--script src="http://localhost:8000/combo/yui?build/yui/yui-min.js"></script-->
     <script src="../js/yui-config.js"></script>
     <script>
-      YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter');
+      YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions');
     </script>
   </body>
 </html>

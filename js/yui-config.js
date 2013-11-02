@@ -116,6 +116,36 @@ var YUI_config = {
           requires: ['node']
         }
       }
+    },
+    user_name_suggestions_core : {
+      'modules': {
+        // user name suggestions core
+        'user-name-suggestions-model' : {
+          fullpath: '../js/user-name-suggestions-core/user-name-suggestions-model.js',
+          requires: ['node', 'io', 'json-parse']
+        },
+        'user-name-suggestions-event-handler' : {
+          fullpath: '../js/user-name-suggestions-core/user-name-suggestions-event-handler.js',
+          requires: ['node']
+        },
+        'user-name-suggestions-controller' : {
+          fullpath: '../js/user-name-suggestions-core/user-name-suggestions-controller.js',
+          requires: ['node', 'user-name-suggestions-model', 'user-name-suggestions-event-handler']
+        }
+      }
+    },
+    user_name_suggestions : {
+      'modules': {
+        // user name suggestions
+        'user-name-suggestions-markup' : {
+          fullpath: '../js/user-name-suggestions/user-name-suggestions-markup.js',
+          requires: ['node']
+        },
+        'user-name-suggestions' : {
+          fullpath: '../js/user-name-suggestions/user-name-suggestions.js',
+          requires: ['node', 'user-name-suggestions-markup']
+        }
+      }
     }
   }
 };
