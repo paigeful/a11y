@@ -16,7 +16,7 @@ YUI.add('country-code-drop-down-markup', function(Y) {
 
     this.ie9WidthOffset = config.ie9WidthOffset;
 
-    this.correspondingNodePlaceholder = this.correspondingNode?this.correspondingNode.get('parentNode').one('.placeholder'):null;
+  this.correspondingNodePlaceholder = this.correspondingNode?this.correspondingNode.get('parentNode').one('.placeholder'):null;
   };
 
   Y.mix(CountryCodeDropDownMarkup.prototype, {

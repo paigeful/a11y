@@ -124,7 +124,6 @@ YUI.add('user-name-suggestions-view', function(Y) {
       _this.suggestionsContainer.setStyle('display', 'none');
       _this.suggestionsReadOutContainer.set('innerHTML', '');
       clearTimeout(_this.timeoutId);
-
       _this.selectedIndex = -1;
 
       _this.userName.detach('keydown', this.keydownHandler);
