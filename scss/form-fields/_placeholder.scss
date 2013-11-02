@@ -1,0 +1,16 @@
+::-webkit-input-placeholder {
+  color: #757575;
+  text-transform: none;
+}
+
+input[type='text']:-ms-input-placeholder,
+input[type='password']:-ms-input-placeholder {
+  color: #757575;
+  text-transform: none;
+}
+
+::-moz-placeholder {
+  color: #757575;
+  text-transform: none;
+  opacity: 1;
+}

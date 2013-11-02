@@ -1,0 +1,25 @@
+.selected-country {
+  position: relative;
+  width: 100%;
+  & > a {
+    border-radius: 4px;
+    border: $default_border;
+    &:focus {
+      border: $highlight_border;
+    }
+  }
+}
+
+.country-arrow-container {
+  position: absolute;
+  top: 15px;
+  @if $direction == 'ltr' {
+    right: 5px;
+  } @else {
+    left: 5px;
+  }
+}
+
+.countries-container {
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "a11y",
+  "version": "0.0.1",
+  "description": "a11y",
+  "main": "html/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sarbbottam/a11y.git"
+  },
+  "keywords": [
+    "a11y, accessibility"
+  ],
+  "author": "Sarbbottam Bandyopadhyay",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "grunt-contrib-clean": "~0.5.0"
+  }
+}
