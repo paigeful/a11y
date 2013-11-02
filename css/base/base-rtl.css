@@ -172,21 +172,22 @@ a {
   *vertical-align: auto;
   zoom: 1;
   *display: inline;
+  vertical-align: bottom;
   height: 100%;
 }
 
 /* Name */
-/* line 21, ../../scss/layout/_grid.scss */
+/* line 22, ../../scss/layout/_grid.scss */
 .first-name {
   width: 49%;
 }
 
-/* line 25, ../../scss/layout/_grid.scss */
+/* line 26, ../../scss/layout/_grid.scss */
 .last-name {
   width: 50%;
 }
 
-/* line 29, ../../scss/layout/_grid.scss */
+/* line 30, ../../scss/layout/_grid.scss */
 .last-name-margin {
   margin-right: 1%;
 }
