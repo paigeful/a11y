@@ -52,10 +52,16 @@ YUI.add('user-name-suggestions-controller', function(Y) {
         userNameSuggestionsView = this.userNameSuggestionsView,
         getSuggestions = userNameSuggestionsModel.getSuggestions,
         renderSuggestions = userNameSuggestionsView.renderSuggestions,
-        hideSuggestions = userNameSuggestionsView.hideSuggestions;
+        hideSuggestions = userNameSuggestionsView.hideSuggestions,
+        checkAvailability = userNameSuggestionsModel.checkAvailability;
 
       this.userName.on('focus', getSuggestions, null, userNameSuggestionsModel, renderSuggestions, userNameSuggestionsView);
       this.userName.on('blur', hideSuggestions, null, userNameSuggestionsView);
+      this.userName.on('blur', checkAvailability, null, userNameSuggestionsModel);
+
+      Y.on('user-name:not-available', function(e){
+        console.log('user-name:not-available');
+      });
 
     }
   }, true);

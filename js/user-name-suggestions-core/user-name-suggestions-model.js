@@ -75,7 +75,7 @@ YUI.add('user-name-suggestions-model', function(Y) {
         url = _this.createUrl(_this.suggestionUrl);
         if(url) {
           _this.request && _this.request.abort();
-          _this.request = Y.io(url, {on: {complete: _this.suggestionComplete}, arguments: {context: _this, callback: callback, callbackContext: callbackContext }});
+          _this.request = Y.io(url, {on: {complete: _this.suggestionComplete}, arguments: {context: _this, callback: callback, callbackContext: callbackContext}});
         }
       } else {
         callback.call(callbackContext, _this.suggestions.list);
@@ -83,12 +83,33 @@ YUI.add('user-name-suggestions-model', function(Y) {
 
     },
 
+    availableComplete : function(id, response, args) {
+      var _this = args.context;
 
-    init : function() {
+      if(response.status === 200) {
+        try {
+          _this.beautifySuggestions(Y.JSON.parse(response.responseText));
+        } catch (error) {}
+        if(suggestions && !suggestions.available) {
+          Y.fire('user-name:not-available');
+        }
+      }
+    },
 
-      var _this = this;
+    checkAvailability : function(e, _this) {
+      var userNameValue = Y.Lang.trim(_this.userName.get('value')),
+        suggestions = _this.suggestions,
+        list = suggestions?suggestions.list:'';
 
+      if (!(list && Y.Array.indexOf(list, userNameValue) !== -1 )) {
+        url = _this.createUrl(_this.availableUrl);
+        if(url) {
+          _this.request && _this.request.abort();
+          _this.request = Y.io(url, {on: {complete: _this.availableComplete}, arguments: {context: _this}});
+        }
+      }
     }
+
   }, true);
 
   Y.namespace('UserNameSuggestions');

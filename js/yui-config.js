@@ -143,7 +143,7 @@ var YUI_config = {
         },
         'user-name-suggestions' : {
           fullpath: '../js/user-name-suggestions/user-name-suggestions.js',
-          requires: ['node', 'user-name-suggestions-markup']
+          requires: ['node']
         }
       }
     }
