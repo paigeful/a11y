@@ -339,36 +339,36 @@ input[type='password']:-ms-input-placeholder {
   opacity: 1;
 }
 
-/* line 1, ../../scss/form-fields/_gender.scss */
+/* line 1, ../../scss/form-fields/_radio-button.scss */
 input[type='radio']:focus + label {
   background-color: #e5f0f9;
 }
 
-/* line 4, ../../scss/form-fields/_gender.scss */
+/* line 4, ../../scss/form-fields/_radio-button.scss */
 .modern input[type='radio'] + label {
   position: relative;
   display: inline-block;
 }
 
-/* line 9, ../../scss/form-fields/_gender.scss */
+/* line 9, ../../scss/form-fields/_radio-button.scss */
 .modern input[type='radio'] + label {
   font-size: 1.2em;
   padding: 0 0.55556em;
   color: #a5a5a5;
 }
 
-/* line 15, ../../scss/form-fields/_gender.scss */
+/* line 15, ../../scss/form-fields/_radio-button.scss */
 input[type='radio']:checked + label {
   color: black;
 }
 
-/* line 19, ../../scss/form-fields/_gender.scss */
+/* line 19, ../../scss/form-fields/_radio-button.scss */
 input[type='radio'] {
   opacity: 0;
   margin-left: 2px;
 }
 
-/* line 24, ../../scss/form-fields/_gender.scss */
+/* line 24, ../../scss/form-fields/_radio-button.scss */
 input[type='radio'] + label::before {
   position: absolute;
   content: '';
@@ -378,7 +378,7 @@ input[type='radio'] + label::before {
   right: -14px;
 }
 
-/* line 37, ../../scss/form-fields/_gender.scss */
+/* line 37, ../../scss/form-fields/_radio-button.scss */
 input[type='radio'] + label::after {
   position: absolute;
   content: '';
@@ -388,16 +388,62 @@ input[type='radio'] + label::after {
   right: -13px;
 }
 
-/* line 50, ../../scss/form-fields/_gender.scss */
+/* line 50, ../../scss/form-fields/_radio-button.scss */
 input[type='radio']:checked + label::after {
   width: 10px;
   height: 10px;
   border: 2px solid #fff;
 }
 
-/* line 56, ../../scss/form-fields/_gender.scss */
+/* line 56, ../../scss/form-fields/_radio-button.scss */
 input[type='radio'].error + label::before {
   border: 8px solid #e73d3d;
+}
+
+/* line 1, ../../scss/form-fields/_check-box.scss */
+input[type='checkbox']:focus + label {
+  background-color: #e5f0f9;
+}
+
+/* line 4, ../../scss/form-fields/_check-box.scss */
+.modern input[type='checkbox'] + label {
+  position: relative;
+}
+
+/* line 8, ../../scss/form-fields/_check-box.scss */
+.modern input[type='checkbox'] + label {
+  font-size: 1em;
+  padding: 0 0.55556em;
+  color: #a5a5a5;
+}
+
+/* line 14, ../../scss/form-fields/_check-box.scss */
+input[type='checkbox']:checked + label {
+  color: black;
+}
+
+/* line 18, ../../scss/form-fields/_check-box.scss */
+input[type='checkbox'] {
+  opacity: 0;
+}
+
+/* line 22, ../../scss/form-fields/_check-box.scss */
+input[type='checkbox'] + label::before {
+  content: '';
+  display: inline-block;
+  background: url("../../images/icons.png") no-repeat;
+  background-size: 15px 60px;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 3px;
+  right: -16px;
+  background-position: 0 -30px;
+}
+
+/* line 39, ../../scss/form-fields/_check-box.scss */
+input[type='checkbox']:checked + label::before {
+  background-position: 0 -45px;
 }
 
 /* line 1, ../../scss/form-fields/_password-meter.scss */
@@ -441,25 +487,6 @@ input[type='radio'].error + label::before {
   line-height: 2.33333em;
   height: 2.33333em;
   display: none;
-}
-
-/* line 1, ../../scss/icons/_icons.scss */
-.icon-medium {
-  display: inline-block;
-  background: url("../../images/icons.png") no-repeat;
-  background-size: 15px 60px;
-  width: 15px;
-  height: 15px;
-}
-
-/* line 9, ../../scss/icons/_icons.scss */
-.unchecked {
-  background-position: 0 -30px;
-}
-
-/* line 13, ../../scss/icons/_icons.scss */
-.checked {
-  background-position: 0 -45px;
 }
 
 /* line 1, ../../scss/user-name-suggestions/_user-name-suggestions.scss */

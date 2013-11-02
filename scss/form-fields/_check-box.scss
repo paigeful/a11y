@@ -1,0 +1,42 @@
+input[type='checkbox']:focus  + label {
+  background-color: #e5f0f9;
+}
+.modern input[type='checkbox'] + label {
+  position: relative;
+}
+
+.modern input[type='checkbox'] + label {
+  font-size: $form_fields_font_size/$form_fields_font_size + em;
+  padding: 0 10/$form_fields_font_size + em;
+  color: #a5a5a5;
+}
+
+input[type='checkbox']:checked + label {
+  color: black;
+}
+
+input[type='checkbox'] {
+  opacity: 0;
+}
+
+input[type='checkbox'] + label::before {
+  content: '';
+  display: inline-block;
+  background: url($sprite_path) no-repeat;
+  background-size: 15px 60px;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 3px;
+  @if $direction == 'ltr' {
+    left: -15px;
+  } @else {
+    right: -16px;
+  }
+  background-position: 0 -30px;
+}
+
+input[type='checkbox']:checked + label::before {
+  background-position: 0 -45px;
+}
+
