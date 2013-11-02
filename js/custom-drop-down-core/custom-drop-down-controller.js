@@ -10,14 +10,6 @@ YUI.add('custom-drop-down-controller', function(Y) {
     this.CustomDropDownStyleUpdater = Y.CustomDropDownMenu.CustomDropDownStyleUpdater;
     this.CustomDropDownIndex = Y.CustomDropDownMenu.CustomDropDownIndex;
     this.CustomDropDownEventHandler = Y.CustomDropDownMenu.CustomDropDownEventHandler;
-
-    this.customDropDownMarkup = '';
-    this.customDropDownStyleUpdater = '';
-    this.customDropDownIndex = '';
-    this.customDropDownEventHandler = '';
-
-    this.referenceNodes = '';
-    this.correspondingNode = '';
   };
 
   Y.mix(CustomDropDownController.prototype, {

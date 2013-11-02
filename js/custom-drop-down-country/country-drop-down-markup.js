@@ -15,17 +15,11 @@ YUI.add('country-drop-down-markup', function(Y) {
     this.correspondingNode = config.correspondingNode;
 
     this.ie9WidthOffset = config.ie9WidthOffset;
-
-    this.selectNodeWidth = '';
-    this.selectedOptionNode = '';
-    this.availableOptionsContainerNode = '';
-    this.selectedOptionHTML = [];
-    this.availableOptionsHTML = [];
   };
 
   Y.mix(CountryDropDownMarkup.prototype, {
     createAndInjectSelectedOptionHTML : function() {
-      var selectedOptionHTML = this.selectedOptionHTML,
+      var selectedOptionHTML = [],
         optionNodes = this.optionNodes,
         selectedIndex = this.selectedIndex,
         ariaLabelledby = Y.one('#'+this.selectNode.getAttribute('aria-labelledby')).get('innerHTML'),
@@ -62,7 +56,7 @@ YUI.add('country-drop-down-markup', function(Y) {
       },
 
     createAndInjectAvailableOptionsHTML : function() {
-      var availableOptionsHTML = this.availableOptionsHTML;
+      var availableOptionsHTML = [];
         availableOptionsHTML.push('<div class="countries-container available-options-container" id="'+ this.availableOptionsContainerId +'" style="width:'+ this.selectNodeWidth+'">');
           availableOptionsHTML.push('<ul role="menu">');
             this.optionNodes.each(function(option) {
