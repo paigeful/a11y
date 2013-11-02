@@ -5,6 +5,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
   UserNameSuggestionsView = function(config) {
     this.userName = config.userName;
     this.suggestionsAvailableMessage = config.suggestionsAvailableMessage;
+    this.endOfsuggestionsMessage = config.endOfsuggestionsMessage;
 
     this.selectedIndex = -1;
   };
@@ -36,8 +37,12 @@ YUI.add('user-name-suggestions-view', function(Y) {
     },
 
     highlightSuggestion : function(suggestion) {
+      var readOutText = suggestion.get('innerHTML');
       suggestion && suggestion.addClass('suggestions-hovered');
-      this.suggestionsReadOutContainer.set('innerHTML', suggestion.get('innerHTML'));
+      if(this.selectedIndex === this.list.length - 1) {
+        readOutText += this.endOfsuggestionsMessage;
+      }
+      this.suggestionsReadOutContainer.set('innerHTML', readOutText);
     },
 
     keydownHandler : function(e, _this) {

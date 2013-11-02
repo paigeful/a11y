@@ -16,8 +16,8 @@ YUI.add('user-name-suggestions', function(Y) {
 
       UserNameSuggestionsView : Y.UserNameSuggestions.UserNameSuggestionsView,
       // message should come from message object
-      suggestionsAvailableMessage : 'Suggestions available, press Shift + Down or Up arrow to navigate between suggestions and press enter to select.',
-
+      suggestionsAvailableMessage : 'Suggestions available, press Shift + Down or Up arrow to navigate between suggestions and press enter to select or type the desired username.',
+      endOfsuggestionsMessage : ' end of suggestions',
       // message should come from app constant object
       suggestionUrl : '../../suggest-username?',
       availableUrl : '../../is-username-available?',
