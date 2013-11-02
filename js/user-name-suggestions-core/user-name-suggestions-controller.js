@@ -57,7 +57,8 @@ YUI.add('user-name-suggestions-controller', function(Y) {
 
       this.userName.on('focus', getSuggestions, null, userNameSuggestionsModel, renderSuggestions, userNameSuggestionsView);
       this.userName.on('blur', hideSuggestions, null, userNameSuggestionsView);
-      this.userName.on('blur', checkAvailability, null, userNameSuggestionsModel);
+
+      //this.userName.on('blur', checkAvailability, null, userNameSuggestionsModel);
 
       Y.on('user-name:not-available', function(e){
         console.log('user-name:not-available');
