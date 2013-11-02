@@ -321,20 +321,20 @@ body {
 
 /* line 1, ../../scss/form-fields/_placeholder.scss */
 ::-webkit-input-placeholder {
-  color: #a5a5a5;
+  color: #757575;
   text-transform: none;
 }
 
 /* line 7, ../../scss/form-fields/_placeholder.scss */
 input[type='text']:-ms-input-placeholder,
 input[type='password']:-ms-input-placeholder {
-  color: #a5a5a5;
+  color: #757575;
   text-transform: none;
 }
 
 /* line 12, ../../scss/form-fields/_placeholder.scss */
 ::-moz-placeholder {
-  color: #a5a5a5;
+  color: #757575;
   text-transform: none;
   opacity: 1;
 }
@@ -354,7 +354,7 @@ input[type='radio']:focus + label {
 .modern input[type='radio'] + label {
   font-size: 1.2em;
   padding: 0 0.55556em;
-  color: #a5a5a5;
+  color: #757575;
 }
 
 /* line 15, ../../scss/form-fields/_radio-button.scss */
@@ -373,7 +373,7 @@ input[type='radio'] + label::before {
   position: absolute;
   content: '';
   border-radius: 8px;
-  border: 8px solid #a5a5a5;
+  border: 8px solid #757575;
   top: 2px;
   left: -14px;
 }
@@ -414,7 +414,7 @@ input[type='checkbox']:focus + label {
 .modern input[type='checkbox'] + label {
   font-size: 1em;
   padding: 0 0.55556em;
-  color: #a5a5a5;
+  color: #757575;
 }
 
 /* line 14, ../../scss/form-fields/_check-box.scss */
@@ -477,9 +477,8 @@ input[type='checkbox']:checked + label::before {
   background: green;
 }
 
-/* line 1, ../../scss/form-fields/_show-hide-password.scss */
-.show-hide-password {
-  color: #a5a5a5;
+/* line 1, ../../scss/form-fields/_mask-unmask-password.scss */
+.unmask-password-container {
   font-size: 1.2em;
   position: absolute;
   bottom: 1px;

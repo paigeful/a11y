@@ -8,7 +8,7 @@ input[type='checkbox']:focus  + label {
 .modern input[type='checkbox'] + label {
   font-size: $form_fields_font_size/$form_fields_font_size + em;
   padding: 0 10/$form_fields_font_size + em;
-  color: #a5a5a5;
+  color: $default_secondary_font_color;
 }
 
 input[type='checkbox']:checked + label {

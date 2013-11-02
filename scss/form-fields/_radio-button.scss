@@ -9,7 +9,7 @@ input[type='radio']:focus  + label {
 .modern input[type='radio'] + label {
   font-size: $form_fields_font_size/$base_font_size + em;
   padding: 0 10/$form_fields_font_size + em;
-  color: #a5a5a5;
+  color: $default_secondary_font_color;
 }
 
 input[type='radio']:checked + label {
@@ -25,7 +25,7 @@ input[type='radio'] + label::before {
   position: absolute;
   content: '';
   border-radius: 8px;
-  border: 8px solid #a5a5a5;
+  border: 8px solid $default_secondary_font_color;
   top: 2px;
   @if $direction == 'ltr' {
     left: -14px;
