@@ -72,7 +72,7 @@ YUI.add('user-name-suggestions-model', function(Y) {
     getSuggestions : function(e, _this, callback, callbackContext) {
       var url;
       // mocked suggestions
-      _this.suggestions.list = ['sarbbo', 'sarbbottam', 'sarbbott.am', 'sarbbottam.b', 'b.sarbbottam'];
+      _this.suggestions.list = ['brucelee', 'brucelee76', 'bruce.lee', 'bruce.ninja.lee', 'bruce.ninjamaster.lee'];
       if(_this.suggestions.list.length < 1) {
         url = _this.createUrl(_this.suggestionUrl);
         if(url) {
