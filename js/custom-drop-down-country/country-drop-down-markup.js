@@ -7,7 +7,6 @@ YUI.add('country-drop-down-markup', function(Y) {
 
     this.selectedOptionId = 'selected-option-for-' + this.selectNode.get('id');
     this.availableOptionsContainerId = 'available-options-container-for-' + this.selectNode.get('id');
-    this.selectedOptionAriaLabeledById = 'option-for-' + this.selectNode.get('id');
 
     this.optionNodes = this.selectNode.all('option');
     this.selectedIndex = this.selectNode.get('selectedIndex');
@@ -84,8 +83,7 @@ YUI.add('country-drop-down-markup', function(Y) {
           optionNodes : this.optionNodes,
           selectedOptionNode : this.selectedOptionNode,
           correspondingNode : this.correspondingNode,
-          availableOptionsContainerNode : this.availableOptionsContainerNode,
-          selectedOptionAriaLabeledById : this.selectedOptionAriaLabeledById
+          availableOptionsContainerNode : this.availableOptionsContainerNode
         };
       },
 
@@ -95,7 +93,6 @@ YUI.add('country-drop-down-markup', function(Y) {
         html.push('<span class="');
         html.push(selectedOption.one('span').get('className'));
         html.push('"></span>&nbsp;&nbsp;');
-        html.push('<span id="'+ this.selectedOptionAriaLabeledById +'" class="clipped"></span>');
         html.push(optionText);
         html.push('<span class="country-arrow-container drop-down-arrow-container"><span class="country-arrow drop-down-arrow"></span></span>');
 
