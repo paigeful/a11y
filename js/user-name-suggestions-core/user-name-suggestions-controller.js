@@ -7,6 +7,7 @@ YUI.add('user-name-suggestions-controller', function(Y) {
     this.UserNameSuggestionsView = config.UserNameSuggestionsView;
     this.suggestionsAvailableMessage = config.suggestionsAvailableMessage;
     this.endOfsuggestionsMessage = config.endOfsuggestionsMessage;
+    this.selectedSuggestionsMessage = config.selectedSuggestionsMessage;
 
     this.suggestionUrl = config.suggestionUrl;
     this.availableUrl = config.availableUrl;
@@ -31,7 +32,8 @@ YUI.add('user-name-suggestions-controller', function(Y) {
       this.userNameSuggestionsView = new this.UserNameSuggestionsView({
         userName : this.userName,
         suggestionsAvailableMessage : this.suggestionsAvailableMessage,
-        endOfsuggestionsMessage : this.endOfsuggestionsMessage
+        endOfsuggestionsMessage : this.endOfsuggestionsMessage,
+        selectedSuggestionsMessage : this.selectedSuggestionsMessage
       });
 
       this.userNameSuggestionsView.renderSuggestionsContainer();

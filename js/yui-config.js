@@ -1,6 +1,13 @@
 var YUI_config = {
   combine: false,
   groups: {
+    html: {
+      'modules': {
+        'messages' : {
+          fullpath: '../js/html/messages.js'
+        }
+      }
+    },
     password_sugar: {
       'modules': {
         // password sugar
@@ -143,6 +150,64 @@ var YUI_config = {
         },
         'user-name-suggestions' : {
           fullpath: '../js/user-name-suggestions/user-name-suggestions.js',
+          requires: ['node']
+        }
+      }
+    },
+    validation_core_configs : {
+      'modules': {
+        'first-name-configs' : {
+          fullpath: '../js/validation-core/validation-configs/fields/first-name-configs.js',
+          requires: ['fields', 'messages', 'validation-patterns']
+        },
+        'last-name-configs' : {
+          fullpath: '../js/validation-core/validation-configs/fields/last-name-configs.js',
+          requires: ['fields', 'messages', 'validation-patterns']
+        }
+      }
+    },
+    validation_core : {
+      'modules': {
+        'validation-patterns' : {
+          fullpath: '../js/validation-core/validation-constants/validation-patterns.js',
+          requires: ['node']
+        },
+        'validation-result-statuses' : {
+          fullpath: '../js/validation-core/validation-constants/validation-result-statuses.js',
+          requires: ['node']
+        },
+        'validation-functions' : {
+          fullpath: '../js/validation-core/validation-functions/validation-functions.js',
+          requires: ['node', 'validation-result-statuses']
+        },
+        'validation-controller' : {
+          fullpath: '../js/validation-core/validation-controller.js',
+          requires: ['node', 'fields-validation-configs', 'validation-functions', 'validation-result-statuses', 'validation-effects']
+        }
+      }
+    },
+    validation_app : {
+      'modules': {
+        'fields-validation-configs' : {
+          fullpath: '../js/validation-app/validation-configs/fields-validation-configs.js',
+          requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs']
+        },
+        'forms-validation-configs' : {
+          fullpath: '../js/validation-app/validation-configs/forms-validation-configs.js',
+          requires: ['forms']
+        },
+        'fields' : {
+          fullpath: '../js/validation-app/validation-targets/fields.js'
+        },
+        'forms' : {
+          fullpath: '../js/validation-app/validation-targets/forms.js'
+        },
+        'validation-effects' : {
+          fullpath: '../js/validation-app/validation-effects/validation-effects.js',
+          requires: ['node']
+        },
+        'validation-controller-use' : {
+          fullpath: '../js/validation-app/validation-controller-use.js',
           requires: ['node']
         }
       }

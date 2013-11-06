@@ -6,6 +6,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
     this.userName = config.userName;
     this.suggestionsAvailableMessage = config.suggestionsAvailableMessage;
     this.endOfsuggestionsMessage = config.endOfsuggestionsMessage;
+    this.selectedSuggestionsMessage = config.selectedSuggestionsMessage;
 
     this.selectedIndex = -1;
   };
@@ -17,7 +18,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
       var suggestionsContainerHTML = [];
 
       suggestionsContainerHTML.push("<div class='row suggestion-row'>");
-        suggestionsContainerHTML.push("<ul class='suggestions-container' id='suggestions-container' role='menu'></ul>");
+        suggestionsContainerHTML.push("<ul class='suggestions-container' id='suggestions-container' aria-hidden='true'></ul>");
         suggestionsContainerHTML.push("<p class='clipped' id='suggestions-read-out-container' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>");
       suggestionsContainerHTML.push("</div>");
 
@@ -48,7 +49,8 @@ YUI.add('user-name-suggestions-view', function(Y) {
     keydownHandler : function(e, _this) {
       var length = _this.list.length - 1,
         previousSelectedIndex,
-        listNodes = _this.suggestionsContainer.all('li');
+        listNodes = _this.suggestionsContainer.all('li'),
+        selectedSuggestion;
       if(e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13) {
         e.halt();
         switch (e.keyCode) {
@@ -71,9 +73,10 @@ YUI.add('user-name-suggestions-view', function(Y) {
             _this.highlightSuggestion(listNodes.item(_this.selectedIndex));
             break;
           case 13 :
-            _this.userName.set('value',listNodes.item(_this.selectedIndex).get('innerHTML'));
+            selectedSuggestion = listNodes.item(_this.selectedIndex).get('innerHTML');
+            _this.userName.set('value',selectedSuggestion);
             _this.unHighlightSuggestion(listNodes.item(_this.selectedIndex));
-            _this.hideSuggestions(e, _this);
+            _this.hideSuggestions(e, _this, selectedSuggestion);
             break;
         }
       }
@@ -86,10 +89,11 @@ YUI.add('user-name-suggestions-view', function(Y) {
     },
 
     mousedownHandler : function(e, _this) {
+      var selectedSuggestion = e.target.get('innerHTML');
       e.halt();
-      _this.userName.set('value',e.target.get('innerHTML'));
+      _this.userName.set('value',selectedSuggestion);
       _this.unHighlightSuggestion(e.target);
-      _this.hideSuggestions(e, _this);
+      _this.hideSuggestions(e, _this, selectedSuggestion);
     },
 
     renderSuggestions : function(list) {
@@ -103,7 +107,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
         this.list = list;
 
         for( i = 0; i < length; i++) {
-          suggestionsHTML.push("<li role='menuitem'>");
+          suggestionsHTML.push("<li>");
             suggestionsHTML.push(list[i]);
           suggestionsHTML.push("</li>");
         }
@@ -125,9 +129,9 @@ YUI.add('user-name-suggestions-view', function(Y) {
 
     },
 
-    hideSuggestions : function(e, _this) {
+    hideSuggestions : function(e, _this, selectedSuggestion) {
       _this.suggestionsContainer.setStyle('display', 'none');
-      _this.suggestionsReadOutContainer.set('innerHTML', '');
+      _this.suggestionsReadOutContainer.set('innerHTML', _this.selectedSuggestionsMessage + selectedSuggestion);
       clearTimeout(_this.timeoutId);
       _this.selectedIndex = -1;
 

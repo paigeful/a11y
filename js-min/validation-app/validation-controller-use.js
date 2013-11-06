@@ -1,0 +1,1 @@
+YUI.add("validation-controller-use",function(a){a.use("validation-controller",function(a){var b=a.Validator.ValidationController;validationController=new b({}),validationController.init()})});

@@ -9,4 +9,5 @@ a {
 
 .message {
   font-size : $message_font_size/$base_font_size + em;
+  padding: 5/$message_font_size + em 10/$message_font_size + em;
 }

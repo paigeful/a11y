@@ -6,7 +6,7 @@ YUI.add('password-meter', function(Y) {
     calculatePasswordStrength,
     passwordMeter = Y.one('#password-meter'),
     previousPasswordStrength = '',
-    passwordValidationMessage = Y.one('#password-validation-message'),
+    passwordValidationMessage = Y.one('#password-message'),
     passwordStrengthMessages = {
       weakest : "Password must contain 8 characters.",
       weaker : "Weak password, easy to crack.",

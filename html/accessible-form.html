@@ -34,19 +34,19 @@
         <div class='row input-row'>
           <div class='column first-name'>
             <label class='field-label' id='first-name-label'>First name</label>
-            <input type='text' id='first-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='name-validation-message' placeholder='First name' aria-labelledby='first-name-label'/>
+            <input type='text' id='first-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='name-message' placeholder='First name' aria-labelledby='first-name-label'/>
           </div><div class='column last-name last-name-margin'>
             <label class='field-label' id='last-name-label'>Last name</label>
-            <input type='text' id='last-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='name-validation-message' placeholder='Last name' aria-labelledby='last-name-label'/>
+            <input type='text' id='last-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='name-message' placeholder='Last name' aria-labelledby='last-name-label'/>
           </div>
         </div>
-        <p class='message' id='name-validation-message'></p>
+        <p class='message' id='name-message' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>
 
         <div class='row input-row' dir='ltr'>
           <label class='field-label' id='user-name-label'>Username</label>
-          <input type='text' id='user-name' class='user-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='user-name-validation-message' dir='ltr' placeholder='Username' aria-labelledby='user-name-label'/>
+          <input type='text' id='user-name' class='user-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='user-name-message' dir='ltr' placeholder='Username' aria-labelledby='user-name-label'/>
         </div>
-        <p class='message' id='user-name-validation-message'></p>
+        <p class='message' id='user-name-message'></p>
 
         <div class='row input-row'>
           <div class='column unmask-password-container' id='unmask-password-container'>
@@ -54,10 +54,10 @@
             <label for='unmask-password'>Unmask password</label>
           </div>
           <label class='field-label' id='password-label'>Password</label>
-          <input type='password' id='password' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='password-validation-message' placeholder='Password' aria-labelledby='password-label'/>
+          <input type='password' id='password' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='password-message' placeholder='Password' aria-labelledby='password-label'/>
         </div>
         <div id='password-meter' class='row input-row password-meter'></div>
-        <p class='message' id='password-validation-message' aria-live="assertive" aria-atomic="true" aria-relevant="all"></p>
+        <p class='message' id='password-message' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>
 
         <div class='row input-row'>
           <label class='field-label' id='mandatory-country-code-select-label'>Country Code for mandatory mobile number</label>
@@ -283,9 +283,9 @@
         </div>
         <div class='row'>
           <label class='field-label' id='mandatory-mobile-label'>Mandatory mobile number</label>
-          <input type='text' id='mandatory-mobile' maxlength='15' aria-required='true' aria-describedby='mandatory-mobile-validation-message' placeholder='Mandatory mobile number' aria-labelledby='mandatory-mobile-label'/>
+          <input type='text' id='mandatory-mobile' maxlength='15' aria-required='true' aria-describedby='mandatory-mobile-message' placeholder='Mandatory mobile number' aria-labelledby='mandatory-mobile-label'/>
         </div>
-        <p class='message' id='mandatory-mobile-validation-message'></p>
+        <p class='message' id='mandatory-mobile-message'></p>
 
         <div class='row input-row'>
           <fieldset>
@@ -296,7 +296,7 @@
             </div>
           </fieldset>
         </div>
-        <p class='message' id='gender-validation-message'></p>
+        <p class='message' id='gender-message'></p>
 
         <div class='row input-row'>
           <label class='field-label' id='country-label'>Country</label>
@@ -520,7 +520,7 @@
             <option country-tld='zw' value='Zimbabwe'>Zimbabwe</option>
           </select>
         </div>
-        <p class='message' id='country-validation-message'></p>
+        <p class='message' id='country-message'></p>
 
         <div class='row input-row'>
           <label class='field-label' id='optional-country-code-select-label'>Country Code for optional recovery phone number</label>
@@ -746,9 +746,9 @@
         </div>
         <div class='row'>
           <label class='field-label' id='optional-mobile-label'>Optional recovery phone number</label>
-          <input type='text' id='optional-mobile' autocomplete='off' maxlength='15' aria-describedby='optional-mobile-validation-message' placeholder='Optional recovery phone number' aria-labelledby='optional-mobile-label'/>
+          <input type='text' id='optional-mobile' autocomplete='off' maxlength='15' aria-describedby='optional-mobile-message' placeholder='Optional recovery phone number' aria-labelledby='optional-mobile-label'/>
         </div>
-        <p class='message' id='optional-mobile-validation-message'></p>
+        <p class='message' id='optional-mobile-message'></p>
 
         <div class='row button-row'>
           <button type='submit' class='submit'><span>Submit</span></button>
@@ -759,6 +759,7 @@
     <!--script src="http://localhost:8000/combo/yui?build/yui/yui-min.js"></script-->
     <script src="../js/yui-config.js"></script>
     <script>
+      //YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions', 'validation-controller-use');
       YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions');
     </script>
   </body>

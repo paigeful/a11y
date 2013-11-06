@@ -133,6 +133,7 @@ a {
 /* line 10, ../../scss/common/_texts.scss */
 .message {
   font-size: 0.86667em;
+  padding: 0.38462em 0.76923em;
 }
 
 /* line 1, ../../scss/common/_buttons.scss */

@@ -1,0 +1,1 @@
+YUI.add("forms",function(a){var b={ENTER_MOBILE_NUMBER:{id:"#enter-mobile-number"}};a.namespace("Validator"),a.Validator.Forms=b},"0.0.1");
