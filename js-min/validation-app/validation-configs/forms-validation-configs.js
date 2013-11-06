@@ -1,1 +1,1 @@
-YUI.add("forms-validation-configs",function(a){var b;a.Validator.Forms,b=function(){return"object"==typeof b.instance?b.instance:(b.instance=this,void 0)},a.mix(b.prototype,{},!0),a.namespace("Validator"),a.Validator.FormsValidationConfigs=b},{requires:["forms"]});
+YUI.add("forms-validation-configs",function(a){var b,c=a.Validator.Forms;b=[{form:c.ACCESSIBLE_FORM,event:"submit",fieldsValidationConfigs:c.ACCESSIBLE_FORM.FieldsValidationConfigs}],a.namespace("Validator"),a.Validator.FormsValidationConfigs=b},{requires:["forms","accessible-form-configs"]});

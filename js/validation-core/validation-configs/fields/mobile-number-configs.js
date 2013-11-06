@@ -4,36 +4,16 @@ YUI.add('mobile-number-configs', function (Y) {
     patterns = Y.Validator.Patterns,
     messages = Y.Messages.Messages;
 
-  fields.MOBILE_NUMBER.CommonValidation = [{
+  fields.MOBILE_NUMBER.CommonValidations = [{
     rule : 'isEmpty',
     effect : 'common',
-    message : messages.MOBILE_EMPTY
-  },
-  {
-    rule : 'isValidPhoneNumberPattern',
-    effect : 'common',
-    message : messages.MOBILE_INVALID_CHAR
-  },
-  {
-    rule : 'isPhoneNumberMinLength',
-    effect : 'common',
-    message : messages.MOBILE_INVALID
+    message : messages.MOBILE_NUMBER_EMPTY
   }];
 
-  fields.MOBILE_NUMBER.RealTimeValidation = [{
-    rule : 'isEmpty',
-    effect : 'realTime',
-    message : messages.MOBILE_EMPTY
-  },
-  {
-    rule : 'isValidPhoneNumberPattern',
-    effect : 'realTime',
-    message : messages.MOBILE_INVALID_CHAR
-  },
-  {
-    rule : 'isPhoneNumberMinLength',
-    effect : 'realTime',
-    message : messages.MOBILE_INVALID
-  }];
+  // fields.MOBILE_NUMBER.RealTimeValidations = [{
+  //   rule : 'isEmpty',
+  //   effect : 'realTime',
+  //   message : messages.MOBILE_NUMBER_EMPTY
+  // }];
 
 }, {requires: ['fields', 'messages', 'patterns']});

@@ -8,24 +8,24 @@ YUI.add('last-name-configs', function (Y) {
     rule : 'isEmpty',
     effect : 'dependent',
     message : messages.LAST_NAME_EMPTY
-  },
-  {
-    rule : 'isInValidPattern',
-    param : patterns.NAME_INVALID_CHAR,
-    effect : 'dependent',
-    message : messages.NAME_INVALID_CHAR
+  // },
+  // {
+  //   rule : 'isInValidPattern',
+  //   param : patterns.NAME_INVALID_CHAR,
+  //   effect : 'dependent',
+  //   message : messages.NAME_INVALID_CHAR
   }];
 
-  fields.LAST_NAME.RealTimeValidations = [{
-    rule : 'isEmpty',
-    effect : 'dependent',
-    message : messages.LAST_NAME_EMPTY
-  },
-  {
-    rule : 'isInValidPattern',
-    param : patterns.NAME_INVALID_CHAR,
-    effect : 'dependent',
-    message : messages.NAME_INVALID_CHAR
-  }];
+  // fields.LAST_NAME.RealTimeValidations = [{
+  //   rule : 'isEmpty',
+  //   effect : 'dependent',
+  //   message : messages.LAST_NAME_EMPTY
+  // },
+  // {
+  //   rule : 'isInValidPattern',
+  //   param : patterns.NAME_INVALID_CHAR,
+  //   effect : 'dependent',
+  //   message : messages.NAME_INVALID_CHAR
+  // }];
 
 }, {requires: ['fields', 'messages', 'validation-patterns']});

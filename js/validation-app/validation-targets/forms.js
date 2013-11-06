@@ -1,7 +1,7 @@
 YUI.add('forms', function(Y){
 
   var forms = {
-    ENTER_MOBILE_NUMBER : { id : '#enter-mobile-number'}
+    ACCESSIBLE_FORM : { id : '#accessible-form'}
   };
 
   Y.namespace('Validator');

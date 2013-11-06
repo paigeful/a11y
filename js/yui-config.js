@@ -163,6 +163,14 @@ var YUI_config = {
         'last-name-configs' : {
           fullpath: '../js/validation-core/validation-configs/fields/last-name-configs.js',
           requires: ['fields', 'messages', 'validation-patterns']
+        },
+        'user-name-configs' : {
+          fullpath: '../js/validation-core/validation-configs/fields/user-name-configs.js',
+          requires: ['fields', 'messages', 'validation-patterns']
+        },
+        'mobile-number-configs' : {
+          fullpath: '../js/validation-core/validation-configs/fields/mobile-number-configs.js',
+          requires: ['fields', 'messages', 'validation-patterns']
         }
       }
     },
@@ -182,7 +190,7 @@ var YUI_config = {
         },
         'validation-controller' : {
           fullpath: '../js/validation-core/validation-controller.js',
-          requires: ['node', 'fields-validation-configs', 'validation-functions', 'validation-result-statuses', 'validation-effects']
+          requires: ['node', 'fields-validation-configs', 'forms-validation-configs', 'validation-functions', 'validation-result-statuses', 'validation-effects']
         }
       }
     },
@@ -190,11 +198,15 @@ var YUI_config = {
       'modules': {
         'fields-validation-configs' : {
           fullpath: '../js/validation-app/validation-configs/fields-validation-configs.js',
-          requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs']
+          requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs', 'user-name-configs', 'mobile-number-configs']
+        },
+        'accessible-form-configs' : {
+          fullpath: '../js/validation-app/validation-configs/forms/accessible-form-configs.js',
+          requires: ['forms', 'fields']
         },
         'forms-validation-configs' : {
           fullpath: '../js/validation-app/validation-configs/forms-validation-configs.js',
-          requires: ['forms']
+          requires: ['forms', 'accessible-form-configs']
         },
         'fields' : {
           fullpath: '../js/validation-app/validation-targets/fields.js'

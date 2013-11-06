@@ -1,21 +1,18 @@
 YUI.add('forms-validation-configs', function (Y) {
 
-  var FormsValidationConfigs,
+  var formsValidationConfigs,
     forms = Y.Validator.Forms;
 
-  FormsValidationConfigs = function() {
-    if (typeof FormsValidationConfigs.instance === "object") {
-      return FormsValidationConfigs.instance;
+  formsValidationConfigs = [
+    {
+      form : forms.ACCESSIBLE_FORM,
+      event : 'submit',
+      fieldsValidationConfigs : forms.ACCESSIBLE_FORM.FieldsValidationConfigs
     }
-    FormsValidationConfigs.instance = this;
-  };
-
-  Y.mix(FormsValidationConfigs.prototype, {
-
-  }, true);
+  ];
 
   Y.namespace('Validator');
 
-  Y.Validator.FormsValidationConfigs = FormsValidationConfigs;
+  Y.Validator.FormsValidationConfigs = formsValidationConfigs;
 
-}, {requires: ['forms']});
+}, {requires: ['forms', 'accessible-form-configs']});

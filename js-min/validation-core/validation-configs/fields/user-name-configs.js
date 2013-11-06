@@ -1,0 +1,1 @@
+YUI.add("user-name-configs",function(a){var b=a.Validator.Fields,c=(a.Validator.ValidationPatterns,a.Messages.Messages);b.USER_NAME.CommonValidations=[{rule:"isEmpty",effect:"common",message:c.USER_NAME_EMPTY}]},{requires:["fields","messages","validation-patterns"]});

@@ -25,6 +25,7 @@
       </div>
       <div class='input-container'>
 
+        <form id='accessible-form' action='http://yahoo.com'>
         <input type='hidden' id='domain' value='yahoo.com'>
         <input type='hidden' id='partner' value='partner'>
         <input type='hidden' id='intl' value='intl'>
@@ -753,14 +754,15 @@
         <div class='row button-row'>
           <button type='submit' class='submit'><span>Submit</span></button>
         </div>
+        </form>
       </div>
     </div>
-    <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
-    <!--script src="http://localhost:8000/combo/yui?build/yui/yui-min.js"></script-->
+    <!--script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script-->
+    <script src="http://localhost:8000/combo/yui?build/yui/yui-min.js"></script>
     <script src="../js/yui-config.js"></script>
     <script>
-      //YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions', 'validation-controller-use');
-      YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions');
+      YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions', 'validation-controller-use');
+      //YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions');
     </script>
   </body>
 </html>

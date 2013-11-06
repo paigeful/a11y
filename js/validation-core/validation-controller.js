@@ -4,6 +4,7 @@ YUI.add('validation-controller', function(Y) {
 
   ValidationController = function(config) {
     this.fieldsValidationConfigs = Y.Validator.FieldsValidationConfigs;
+    this.formsValidationConfigs = Y.Validator.FormsValidationConfigs;
     this.validationFunctions = new Y.Validator.ValidationFunctions();
     this.validationResultStatuses = Y.Validator.ValidationResultStatuses;
     this.validationEffects = new Y.Validator.ValidationEffects();
@@ -14,6 +15,18 @@ YUI.add('validation-controller', function(Y) {
 
   Y.mix(ValidationController.prototype, {
 
+    getValidationStatus : function(fieldsValidationConfigs) {
+      var validationStatus = true,
+        i, l = fieldsValidationConfigs.length;
+      for(i = 0; i < l; i +=1) {
+        validationStatus = validationStatus && fieldsValidationConfigs[i].field.status;
+        if(!validationStatus) {
+          break;
+        }
+      }
+      return validationStatus;
+    },
+
     validateField : function(e, _this, validations, field){
       var i, l = validations.length,
         config,
@@ -23,7 +36,9 @@ YUI.add('validation-controller', function(Y) {
         validationResultStatuses = _this.validationResultStatuses,
         validationEffects = _this.validationEffects,
         result,
-        fieldNode = e.target;
+        fieldNode;
+
+      fieldNode = e.target ? e.target : Y.one(field.id);
 
       for(i = 0; i < l; i += 1) {
         validation = validations[i];
@@ -31,7 +46,7 @@ YUI.add('validation-controller', function(Y) {
         param = validation.param;
         effect = validation.effect;
         message = validation.message;
-        value = e.target.get('value');
+        value = fieldNode.get('value');
 
         result = validationFunctions[rule](value, param);
 
@@ -64,6 +79,25 @@ YUI.add('validation-controller', function(Y) {
       }
     },
 
+    validateForm : function(e, _this, fieldsValidationConfigs, form){
+      e.halt();
+      var i, l = fieldsValidationConfigs.length,
+        field,
+        fieldsValidationConfig;
+
+      for( i = 0; i < l; i += 1) {
+        fieldsValidationConfig = fieldsValidationConfigs[i];
+        _this.validateField({}, _this, fieldsValidationConfig.fieldValidations, fieldsValidationConfig.field);
+      }
+
+      if(_this.getValidationStatus(fieldsValidationConfigs)) {
+        this.submit();
+      } else {
+        Y.one('[aria-invalid=true]').focus();
+      }
+
+    },
+
     fieldFocusHandler : function(e, field) {
       if (field.message !== '') {
         var messageTargetNode = Y.one(field.messageTargetId);
@@ -77,6 +111,7 @@ YUI.add('validation-controller', function(Y) {
     init : function() {
       var i, l,
         fieldsValidationConfigs = this.fieldsValidationConfigs,
+        formsValidationConfigs = this.formsValidationConfigs,
         configs, field, event, validations,
         index,
         fields = this.fields;
@@ -92,6 +127,19 @@ YUI.add('validation-controller', function(Y) {
         }
       }
 
+      for (i = 0, l = formsValidationConfigs.length; i < l; i += 1) {
+        configs = formsValidationConfigs[i];
+
+        if(configs) {
+          form = configs.form;
+          event = configs.event;
+          fieldsValidationConfigs = configs.fieldsValidationConfigs;
+
+          Y.on(event, this.validateForm, form.id, null, this, fieldsValidationConfigs, form);
+        }
+
+      }
+
       for(index in fields) {
         Y.on('focus', this.fieldFocusHandler, fields[index].id, null, fields[index]);
       }
@@ -103,4 +151,4 @@ YUI.add('validation-controller', function(Y) {
 
   Y.Validator.ValidationController = ValidationController;
 
-}, {requires: ['node', 'fields-validation-configs', 'validation-functions', 'validation-result-statuses', 'validation-effects']});
+}, {requires: ['node', 'fields-validation-configs', 'forms-validation-configs', 'validation-functions', 'validation-result-statuses', 'validation-effects']});
