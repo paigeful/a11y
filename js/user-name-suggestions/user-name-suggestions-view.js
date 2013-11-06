@@ -131,7 +131,11 @@ YUI.add('user-name-suggestions-view', function(Y) {
 
     hideSuggestions : function(e, _this, selectedSuggestion) {
       _this.suggestionsContainer.setStyle('display', 'none');
-      _this.suggestionsReadOutContainer.set('innerHTML', _this.selectedSuggestionsMessage + selectedSuggestion);
+      if(selectedSuggestion) {
+        _this.suggestionsReadOutContainer.set('innerHTML', _this.selectedSuggestionsMessage + selectedSuggestion);
+      } else {
+        //_this.suggestionsReadOutContainer.set('innerHTML', '');
+      }
       clearTimeout(_this.timeoutId);
       _this.selectedIndex = -1;
 
