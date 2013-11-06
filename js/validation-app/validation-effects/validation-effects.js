@@ -44,6 +44,25 @@ YUI.add('validation-effects', function(Y) {
         messageTargetNode = Y.one(messageTargetId);
 
       messageTargetNode.set('innerHTML', message);
+    },
+
+    updateStrength : function(strengthMeterTargetNode, strength, field) {
+      strengthMeterTargetNode.removeClass(field.strength);
+      strengthMeterTargetNode.addClass(strength);
+      field.strength = strength;
+    },
+
+    password : function(field, resultParam) {
+      var message = resultParam.message,
+        strength = resultParam.strength.toLowerCase(),
+        messageTargetId =  field.messageTargetId,
+        strengthMeterTargetId = field.strengthMeterTargetId,
+        messageTargetNode = Y.one(messageTargetId),
+        strengthMeterTargetNode = Y.one(strengthMeterTargetId);
+
+      messageTargetNode.set('innerHTML', message);
+
+      this.updateStrength(strengthMeterTargetNode, strength, field );
     }
 
   }, true);

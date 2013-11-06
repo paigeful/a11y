@@ -25,6 +25,16 @@ YUI.add('fields-validation-configs', function (Y) {
     //   validations : fields.LAST_NAME.RealTimeValidations
     // },
     {
+      field : fields.PASSWORD,
+      event : 'blur',
+      validations : fields.PASSWORD.CommonValidations
+    },
+    {
+      field : fields.PASSWORD,
+      event : 'valuechange',
+      validations : fields.PASSWORD.RealTimeValidations
+    },
+    {
       field : fields.USER_NAME,
       event : 'blur',
       validations : fields.USER_NAME.CommonValidations
@@ -40,4 +50,4 @@ YUI.add('fields-validation-configs', function (Y) {
 
   Y.Validator.FieldsValidationConfigs = fieldsValidationConfigs;
 
-}, {requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs', 'user-name-configs', 'mobile-number-configs']});
+}, {requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs', 'password-configs', 'user-name-configs', 'mobile-number-configs']});

@@ -28,6 +28,14 @@ YUI.add('messages', function(Y){
     PASSWORD_CONTAINS_NAME                  : 'Password cannot contain your name',
     PASSWORD_CONTAINS_USER_NAME             : 'Password cannot contain your Yahoo! ID',
 
+    PASSWORD_STRENGTH                       : {
+                                                WEAKEST : 'Password must contain 8 characters.',
+                                                WEAKER : 'Weak password, easy to crack.',
+                                                WEAK : 'Still weak password.',
+                                                STRONG : 'Not bad, but you can make it better.',
+                                                STRONGER : 'Super!! you are a password ninja.',
+                                              },
+
     // MOBILE
     MOBILE_NUMBER_EMPTY                      : 'Enter mobile number',
     MOBILE_NUMBER_INVALID                    : 'Mobile number entered is not correct',

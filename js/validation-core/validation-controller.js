@@ -36,6 +36,8 @@ YUI.add('validation-controller', function(Y) {
         validationResultStatuses = _this.validationResultStatuses,
         validationEffects = _this.validationEffects,
         result,
+        resultStatus,
+        resultParam,
         fieldNode;
 
       fieldNode = e.target ? e.target : Y.one(field.id);
@@ -45,34 +47,37 @@ YUI.add('validation-controller', function(Y) {
         rule = validation.rule;
         param = validation.param;
         effect = validation.effect;
-        message = validation.message;
+        //message = validation.message;
         value = fieldNode.get('value');
 
         result = validationFunctions[rule](value, param);
+        resultStatus = result.status;
+        resultParam = result.param || {};
+        message = result.param && result.param.message || validation.message;
 
-        if(result === validationResultStatuses.PASSED) {
+        if(resultStatus === validationResultStatuses.PASSED) {
           field.status = true;
           field.message = '';
           fieldNode.setAttribute('aria-invalid', 'false');
-          validationEffects[effect](field);
-        } else if (result === validationResultStatuses.FAILED) {
+          validationEffects[effect](field, resultParam);
+        } else if (resultStatus === validationResultStatuses.FAILED) {
           field.status = false;
           field.message = message;
           fieldNode.setAttribute('aria-invalid', 'true');
-          validationEffects[effect](field);
+          validationEffects[effect](field, resultParam);
           break;
-        } else if (result === validationResultStatuses.FAILED_BUT_EFFECT_SKIPPED) {
+        } else if (resultStatus === validationResultStatuses.FAILED_BUT_EFFECT_SKIPPED) {
           fieldNode.setAttribute('aria-invalid', 'true');
           field.status = false;
           field.message = '';
           break;
-        } else if (result === validationResultStatuses.PASSED_BUT_FURTHER_VALIDATION_SKIPPED) {
+        } else if (resultStatus === validationResultStatuses.PASSED_BUT_FURTHER_VALIDATION_SKIPPED) {
           field.status = true;
           field.message = '';
           fieldNode.setAttribute('aria-invalid', 'false');
-          validationEffects[effect](field);
+          validationEffects[effect](field, resultParam);
           break;
-        } else if (result === validationResultStatuses.SKIPPED) {
+        } else if (resultStatus === validationResultStatuses.SKIPPED) {
           break;
         }
 
@@ -83,7 +88,10 @@ YUI.add('validation-controller', function(Y) {
       e.halt();
       var i, l = fieldsValidationConfigs.length,
         field,
-        fieldsValidationConfig;
+        fieldsValidationConfig,
+        firstInvalidField,
+        firstInvalidFieldMessageNode,
+        firstInvalidFieldMessage;
 
       for( i = 0; i < l; i += 1) {
         fieldsValidationConfig = fieldsValidationConfigs[i];
@@ -93,7 +101,11 @@ YUI.add('validation-controller', function(Y) {
       if(_this.getValidationStatus(fieldsValidationConfigs)) {
         this.submit();
       } else {
-        Y.one('[aria-invalid=true]').focus();
+        firstInvalidField = Y.one('[aria-invalid=true]');
+        firstInvalidField.focus();
+        firstInvalidFieldMessageNode = Y.one('#' + firstInvalidField.getAttribute('aria-describedby'));
+        firstInvalidFieldMessage = firstInvalidFieldMessageNode.get('innerHTML');
+        Y.one('#first-invalid-field-message').set('innerHTML', firstInvalidFieldMessage);
       }
 
     },

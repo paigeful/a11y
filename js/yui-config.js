@@ -8,14 +8,6 @@ var YUI_config = {
         }
       }
     },
-    password_sugar: {
-      'modules': {
-        // password sugar
-        'password-meter' : {
-          fullpath: '../js/password-sugar/password-meter.js'
-        }
-      }
-    },
     formatter: {
       'modules': {
         // input data formatter
@@ -164,6 +156,10 @@ var YUI_config = {
           fullpath: '../js/validation-core/validation-configs/fields/last-name-configs.js',
           requires: ['fields', 'messages', 'validation-patterns']
         },
+        'password-configs' : {
+          fullpath: '../js/validation-core/validation-configs/fields/password-configs.js',
+          requires: ['fields', 'messages', 'validation-patterns']
+        },
         'user-name-configs' : {
           fullpath: '../js/validation-core/validation-configs/fields/user-name-configs.js',
           requires: ['fields', 'messages', 'validation-patterns']
@@ -198,7 +194,7 @@ var YUI_config = {
       'modules': {
         'fields-validation-configs' : {
           fullpath: '../js/validation-app/validation-configs/fields-validation-configs.js',
-          requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs', 'user-name-configs', 'mobile-number-configs']
+          requires: ['fields', 'event-valuechange', 'first-name-configs', 'last-name-configs', 'password-configs', 'user-name-configs', 'mobile-number-configs']
         },
         'accessible-form-configs' : {
           fullpath: '../js/validation-app/validation-configs/forms/accessible-form-configs.js',

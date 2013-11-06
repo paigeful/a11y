@@ -17,6 +17,10 @@ YUI.add('accessible-form-configs', function (Y) {
       fieldValidations : fields.USER_NAME.CommonValidations
     },
     {
+      field : fields.PASSWORD,
+      fieldValidations : fields.PASSWORD.CommonValidations
+    },
+    {
       field : fields.MOBILE_NUMBER,
       fieldValidations : fields.MOBILE_NUMBER.CommonValidations
     }

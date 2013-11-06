@@ -26,6 +26,7 @@
       <div class='input-container'>
 
         <form id='accessible-form' action='http://yahoo.com'>
+        <p class='clipped' id='first-invalid-field-message'></p>
         <input type='hidden' id='domain' value='yahoo.com'>
         <input type='hidden' id='partner' value='partner'>
         <input type='hidden' id='intl' value='intl'>
@@ -47,7 +48,7 @@
           <label class='field-label' id='user-name-label'>Username</label>
           <input type='text' id='user-name' class='user-name' autocomplete='off' maxlength='32' aria-required='true' aria-describedby='user-name-message' dir='ltr' placeholder='Username' aria-labelledby='user-name-label'/>
         </div>
-        <p class='message' id='user-name-message'></p>
+        <p class='message' id='user-name-message' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>
 
         <div class='row input-row'>
           <div class='column unmask-password-container' id='unmask-password-container'>
@@ -286,7 +287,7 @@
           <label class='field-label' id='mandatory-mobile-label'>Mandatory mobile number</label>
           <input type='text' id='mandatory-mobile' maxlength='15' aria-required='true' aria-describedby='mandatory-mobile-message' placeholder='Mandatory mobile number' aria-labelledby='mandatory-mobile-label'/>
         </div>
-        <p class='message' id='mandatory-mobile-message'></p>
+        <p class='message' id='mandatory-mobile-message' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>
 
         <div class='row input-row'>
           <fieldset>
@@ -761,7 +762,7 @@
     <!--script src="http://localhost:8000/combo/yui?build/yui/yui-min.js"></script-->
     <script src="../js/yui-config.js"></script>
     <script>
-      YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'password-meter', 'user-name-suggestions', 'validation-controller-use');
+      YUI().use('include-polyfills', 'country-code-drop-down', 'country-drop-down', 'mobile-number-formatter', 'user-name-suggestions', 'validation-controller-use');
     </script>
   </body>
 </html>

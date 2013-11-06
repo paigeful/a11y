@@ -1,0 +1,1 @@
+YUI.add("password-configs",function(a){var b=a.Validator.Fields;a.Validator.ValidationPatterns,a.Messages.Messages,b.PASSWORD.CommonValidations=[{rule:"validatePassword",effect:"password"}],b.PASSWORD.RealTimeValidations=[{rule:"validatePassword",effect:"password"}]},{requires:["fields","messages","validation-patterns"]});
