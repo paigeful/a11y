@@ -59,12 +59,12 @@ YUI.add('validation-controller', function(Y) {
           field.status = true;
           field.message = '';
           fieldNode.setAttribute('aria-invalid', 'false');
-          validationEffects[effect](field, resultParam);
+          validationEffects[effect](field, fieldNode, resultParam);
         } else if (resultStatus === validationResultStatuses.FAILED) {
           field.status = false;
           field.message = message;
           fieldNode.setAttribute('aria-invalid', 'true');
-          validationEffects[effect](field, resultParam);
+          validationEffects[effect](field, fieldNode, resultParam);
           break;
         } else if (resultStatus === validationResultStatuses.FAILED_BUT_EFFECT_SKIPPED) {
           fieldNode.setAttribute('aria-invalid', 'true');
@@ -75,7 +75,7 @@ YUI.add('validation-controller', function(Y) {
           field.status = true;
           field.message = '';
           fieldNode.setAttribute('aria-invalid', 'false');
-          validationEffects[effect](field, resultParam);
+          validationEffects[effect](field, fieldNode, resultParam);
           break;
         } else if (resultStatus === validationResultStatuses.SKIPPED) {
           break;
@@ -120,8 +120,14 @@ YUI.add('validation-controller', function(Y) {
       }
     },
 
+    simulateFormSubmit : function(e) {
+      e.halt();
+      this.simulate('submit');
+    },
+
     init : function() {
-      var i, l,
+      var _this = this,
+        i, l,
         fieldsValidationConfigs = this.fieldsValidationConfigs,
         formsValidationConfigs = this.formsValidationConfigs,
         configs, field, event, validations,
@@ -146,8 +152,12 @@ YUI.add('validation-controller', function(Y) {
           form = configs.form;
           event = configs.event;
           fieldsValidationConfigs = configs.fieldsValidationConfigs;
+          formNode = Y.one(form.id);
 
           Y.on(event, this.validateForm, form.id, null, this, fieldsValidationConfigs, form);
+
+          formNode.one('[type=submit]').on('mousedown', _this.simulateFormSubmit);
+
         }
 
       }
@@ -155,6 +165,7 @@ YUI.add('validation-controller', function(Y) {
       for(index in fields) {
         Y.on('focus', this.fieldFocusHandler, fields[index].id, null, fields[index]);
       }
+
     }
 
   }, true);

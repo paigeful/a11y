@@ -3,8 +3,8 @@ YUI.add('messages', function(Y){
   var messages = {
 
     // NAME
-    FIRST_NAME_EMPTY                        : 'Enter First Name',
-    LAST_NAME_EMPTY                         : 'Enter Last Name',
+    FIRST_NAME_EMPTY                        : 'Enter Name',
+    LAST_NAME_EMPTY                         : 'Enter Name',
     NAME_INVALID_CHAR                       : 'Numbers and special characters are not allowed',
 
     // USER_NAME

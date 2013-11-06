@@ -12,15 +12,20 @@ YUI.add('validation-effects', function(Y) {
   };
 
   Y.mix(ValidationEffects.prototype, {
-    common : function(field) {
+    common : function(field, fieldNode) {
       var message = field.message,
         messageTargetId =  field.messageTargetId,
         messageTargetNode = Y.one(messageTargetId);
 
       messageTargetNode.set('innerHTML', message);
+      if(field.status) {
+        fieldNode.removeClass('error');
+      } else {
+        fieldNode.addClass('error');
+      }
     },
 
-    dependent : function(field) {
+    dependent : function(field, fieldNode) {
       var message = field.message,
         messageTargetId =  field.messageTargetId,
         messageTargetNode = Y.one(messageTargetId),
@@ -36,14 +41,24 @@ YUI.add('validation-effects', function(Y) {
         }
       }
       messageTargetNode.set('innerHTML', message);
+      if(field.status) {
+        fieldNode.removeClass('error');
+      } else {
+        fieldNode.addClass('error');
+      }
     },
 
-    realTime : function(field) {
+    realTime : function(field, fieldNode) {
       var message = field.message,
         messageTargetId =  field.messageTargetId,
         messageTargetNode = Y.one(messageTargetId);
 
       messageTargetNode.set('innerHTML', message);
+      if(field.status) {
+        fieldNode.removeClass('error');
+      } else {
+        fieldNode.addClass('error');
+      }
     },
 
     updateStrength : function(strengthMeterTargetNode, strength, field) {
@@ -52,7 +67,7 @@ YUI.add('validation-effects', function(Y) {
       field.strength = strength;
     },
 
-    password : function(field, resultParam) {
+    password : function(field, fieldNode, resultParam) {
       var message = resultParam.message,
         strength = resultParam.strength.toLowerCase(),
         messageTargetId =  field.messageTargetId,
@@ -61,6 +76,11 @@ YUI.add('validation-effects', function(Y) {
         strengthMeterTargetNode = Y.one(strengthMeterTargetId);
 
       messageTargetNode.set('innerHTML', message);
+      if(field.status) {
+        fieldNode.removeClass('error');
+      } else {
+        fieldNode.addClass('error');
+      }
 
       this.updateStrength(strengthMeterTargetNode, strength, field );
     }

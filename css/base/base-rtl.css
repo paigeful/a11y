@@ -119,6 +119,11 @@ legend {
   clear: both;
 }
 
+/* line 19, ../../scss/common/_common.scss */
+.error {
+  border: 1px solid #D51616 !important;
+}
+
 /* line 1, ../../scss/common/_texts.scss */
 h1 {
   font-size: 2em;
