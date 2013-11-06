@@ -415,26 +415,28 @@ input[type='checkbox']:focus + label {
 /* line 4, ../../scss/form-fields/_check-box.scss */
 .modern input[type='checkbox'] + label {
   position: relative;
+  display: inline-block;
+  height: 100%;
 }
 
-/* line 8, ../../scss/form-fields/_check-box.scss */
+/* line 10, ../../scss/form-fields/_check-box.scss */
 .modern input[type='checkbox'] + label {
   font-size: 1em;
   padding: 0 0.55556em;
   color: #757575;
 }
 
-/* line 14, ../../scss/form-fields/_check-box.scss */
+/* line 16, ../../scss/form-fields/_check-box.scss */
 input[type='checkbox']:checked + label {
   color: black;
 }
 
-/* line 18, ../../scss/form-fields/_check-box.scss */
+/* line 20, ../../scss/form-fields/_check-box.scss */
 input[type='checkbox'] {
   opacity: 0;
 }
 
-/* line 22, ../../scss/form-fields/_check-box.scss */
+/* line 24, ../../scss/form-fields/_check-box.scss */
 input[type='checkbox'] + label::before {
   content: '';
   display: inline-block;
@@ -443,12 +445,12 @@ input[type='checkbox'] + label::before {
   width: 15px;
   height: 15px;
   position: absolute;
-  top: 3px;
+  top: 12px;
   left: -15px;
   background-position: 0 -30px;
 }
 
-/* line 39, ../../scss/form-fields/_check-box.scss */
+/* line 41, ../../scss/form-fields/_check-box.scss */
 input[type='checkbox']:checked + label::before {
   background-position: 0 -45px;
 }
