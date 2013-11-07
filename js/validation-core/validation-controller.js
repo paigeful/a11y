@@ -103,9 +103,9 @@ YUI.add('validation-controller', function(Y) {
       } else {
         firstInvalidField = Y.one('[aria-invalid=true]');
         firstInvalidField.focus();
-        firstInvalidFieldMessageNode = Y.one('#' + firstInvalidField.getAttribute('aria-describedby'));
-        firstInvalidFieldMessage = firstInvalidFieldMessageNode.get('innerHTML');
-        Y.one('#first-invalid-field-message').set('innerHTML', firstInvalidFieldMessage);
+        // firstInvalidFieldMessageNode = Y.one('#' + firstInvalidField.getAttribute('aria-describedby'));
+        // firstInvalidFieldMessage = firstInvalidFieldMessageNode.get('innerHTML');
+        // Y.one('#first-invalid-field-message').set('innerHTML', firstInvalidFieldMessage);
       }
 
     },

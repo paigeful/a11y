@@ -52,9 +52,9 @@ YUI.add('user-name-suggestions-view', function(Y) {
         listNodes = _this.suggestionsContainer.all('li'),
         selectedSuggestion;
       if(e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13) {
-        e.halt();
         switch (e.keyCode) {
           case 38 :
+            e.halt();
             previousSelectedIndex = _this.selectedIndex;
             _this.selectedIndex -=1;
             if(_this.selectedIndex < 0) {
@@ -64,6 +64,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
             _this.highlightSuggestion(listNodes.item(_this.selectedIndex));
             break;
           case 40 :
+            e.halt();
             previousSelectedIndex = _this.selectedIndex;
             _this.selectedIndex +=1;
             if(_this.selectedIndex > length) {
@@ -73,9 +74,12 @@ YUI.add('user-name-suggestions-view', function(Y) {
             _this.highlightSuggestion(listNodes.item(_this.selectedIndex));
             break;
           case 13 :
-            selectedSuggestion = listNodes.item(_this.selectedIndex).get('innerHTML');
-            _this.userName.set('value',selectedSuggestion);
-            _this.unHighlightSuggestion(listNodes.item(_this.selectedIndex));
+            if(_this.selectedIndex !== -1) {
+              e.halt();
+              selectedSuggestion = listNodes.item(_this.selectedIndex).get('innerHTML');
+              _this.userName.set('value',selectedSuggestion);
+              _this.unHighlightSuggestion(listNodes.item(_this.selectedIndex));
+            }
             _this.hideSuggestions(e, _this, selectedSuggestion);
             break;
         }
