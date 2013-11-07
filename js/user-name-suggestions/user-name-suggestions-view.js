@@ -118,9 +118,9 @@ YUI.add('user-name-suggestions-view', function(Y) {
       }
 
       this.suggestionsContainer.setStyle('display', 'block');
-      this.timeoutId = setTimeout(function() {
+      //this.timeoutId = setTimeout(function() {
         _this.suggestionsReadOutContainer.set('innerHTML', _this.suggestionsAvailableMessage);
-      }, 2000);
+      //}, 2000);
 
       this.userName.on('keydown', this.keydownHandler, null, _this);
 
@@ -134,9 +134,9 @@ YUI.add('user-name-suggestions-view', function(Y) {
       if(selectedSuggestion) {
         _this.suggestionsReadOutContainer.set('innerHTML', _this.selectedSuggestionsMessage + selectedSuggestion);
       } else {
-        _this.suggestionsReadOutContainer.set('innerHTML', '');
+        //_this.suggestionsReadOutContainer.set('innerHTML', '');
       }
-      clearTimeout(_this.timeoutId);
+      //clearTimeout(_this.timeoutId);
       _this.selectedIndex = -1;
 
       _this.userName.detach('keydown', this.keydownHandler);
