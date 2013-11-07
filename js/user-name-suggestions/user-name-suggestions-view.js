@@ -19,7 +19,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
 
       suggestionsContainerHTML.push("<div class='row suggestion-row'>");
         suggestionsContainerHTML.push("<ul class='suggestions-container' id='suggestions-container' aria-hidden='true'></ul>");
-        suggestionsContainerHTML.push("<p class='clipped' id='suggestions-read-out-container' aria-live='assertive' aria-atomic='true' aria-relevant='all'></p>");
+        suggestionsContainerHTML.push("<p class='clipped' id='suggestions-read-out-container' aria-live='polite' aria-atomic='false' aria-relevant='all'></p>");
       suggestionsContainerHTML.push("</div>");
 
       suggestionsContainerHTML = suggestionsContainerHTML.join('');
@@ -134,7 +134,7 @@ YUI.add('user-name-suggestions-view', function(Y) {
       if(selectedSuggestion) {
         _this.suggestionsReadOutContainer.set('innerHTML', _this.selectedSuggestionsMessage + selectedSuggestion);
       } else {
-        //_this.suggestionsReadOutContainer.set('innerHTML', '');
+        _this.suggestionsReadOutContainer.set('innerHTML', '');
       }
       clearTimeout(_this.timeoutId);
       _this.selectedIndex = -1;
