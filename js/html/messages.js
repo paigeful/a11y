@@ -3,19 +3,19 @@ YUI.add('messages', function(Y){
   var messages = {
 
     // NAME
-    FIRST_NAME_EMPTY                        : 'Enter Name',
-    LAST_NAME_EMPTY                         : 'Enter Name',
+    FIRST_NAME_EMPTY                        : 'First name is required',
+    LAST_NAME_EMPTY                         : 'Last name is required',
     NAME_INVALID_CHAR                       : 'Numbers and special characters are not allowed',
 
     // USER_NAME
-    USER_NAME_EMPTY                         : 'Choose a username',
-    USER_NAME_NOT_LONG_ENOUGH               : 'username must be at least 4 characters long',
-    USER_NAME_INVALID_CHAR                  : 'username can include letters, numbers, underscores and one period',
-    USER_NAME_CONSECUTIVE_SPECIAL_CHAR      : 'username cannot contain consecutive underscores and periods',
-    USER_NAME_MORE_THAN_ONE_DOT             : 'username can only include one period',
-    USER_NAME_INVALID_LAST_CHAR             : 'username cannot end in an underscore or a period',
-    USER_NAME_INVALID_FIRST_CHAR            : 'username must start with a letter',
-    USER_NAME_UNAVAILABLE                   : 'username is not available',
+    USER_NAME_EMPTY                         : 'Username is required',
+    USER_NAME_NOT_LONG_ENOUGH               : 'Username must be at least 4 characters long',
+    USER_NAME_INVALID_CHAR                  : 'Username can include letters, numbers, underscores and one period',
+    USER_NAME_CONSECUTIVE_SPECIAL_CHAR      : 'Username cannot contain consecutive underscores and periods',
+    USER_NAME_MORE_THAN_ONE_DOT             : 'Username can only include one period',
+    USER_NAME_INVALID_LAST_CHAR             : 'Username cannot end in an underscore or a period',
+    USER_NAME_INVALID_FIRST_CHAR            : 'Username must start with a letter',
+    USER_NAME_UNAVAILABLE                   : 'Username is not available',
 
     // PASSWORD
     PASSWORD_EMPTY                          : 'Password must be 8 to 32 characters',
@@ -37,15 +37,12 @@ YUI.add('messages', function(Y){
                                               },
 
     // MOBILE
-    MOBILE_NUMBER_EMPTY                      : 'Enter mobile number',
+    MOBILE_NUMBER_EMPTY                      : 'Mobile number required',
     MOBILE_NUMBER_INVALID                    : 'Mobile number entered is not correct',
 
     // PHONE
-    PHONE_NUMBER_EMPTY                       : 'Enter phone number',
+    PHONE_NUMBER_EMPTY                       : 'Phone number required',
     PHONE_NUMBER_INVALID                     : 'Phone number entered is not correct',
-
-    //NUMERIC
-    NUMERIC_ONLY                            : 'Enter numbers only',
 
     // GENDER
     GENDER_NOT_SPECIFIED                    : 'Gender required'
